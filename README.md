@@ -1,1 +1,1 @@
-# MusicGenerator
+# sound compression
