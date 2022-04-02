@@ -34,13 +34,12 @@ def create_data_from_wav_to_npy(train_data_set_up):
         X, y = train_data_set_up.train_data(music1, music2)
         data_to_npy(X, "originalX_" + name_length_of_signal(train_data_set_up))
         data_to_npy(y, "originalY_" + name_length_of_signal(train_data_set_up))
-    data_to_npy(blank_gaps, "blank_gaps_" + name_missing_percent(train_data_set_up))
+    data_to_npy(blank_gaps, name_missing_percent(train_data_set_up) + "_blank_gaps")
     data_to_npy(rate, "rate")
 
 
 def load_data_from_npy(train_data_set_up):
     X = data_from_npy("originalX_" + name_length_of_signal(train_data_set_up))
     y = data_from_npy("originalY_" + name_length_of_signal(train_data_set_up))
-    blank_gaps = data_from_npy("blank_gaps_" + name_missing_percent(train_data_set_up))
+    blank_gaps = data_from_npy(name_missing_percent(train_data_set_up) + "_blank_gaps")
     return X, y, blank_gaps
-

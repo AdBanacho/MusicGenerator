@@ -28,11 +28,11 @@ def display(history, name, train_data_setup):
     plt.title('coeff determination')
     plt.ylabel('R^2')
     plt.xlabel('epoch')
-    plt.savefig('scores/' + name + name_missing_percent(train_data_setup) + '.png')
+    plt.savefig('scores/' + name_missing_percent(train_data_setup) + name + '.png')
     plt.close()
 
-    with open('scores/' + name + name_missing_percent(train_data_setup) + '.txt', "w") as output:
-        output.write('Predict ' + name + name_missing_percent(train_data_setup) + '\n')
+    with open('scores/' + name_missing_percent(train_data_setup) + name + '.txt', "w") as output:
+        output.write('Predict ' + name_missing_percent(train_data_setup) + name + '\n')
         output.write('Mean squared error: ' + str(round(history.history['loss'][-1], 3)) + '\n')
         output.write('Mean absolute error: ' + str(round(history.history['mean_absolute_error'][-1], 3)) + '\n')
         output.write('R^2: ' + str(round(history.history['coeff_determination'][-1], 3)) + '\n')

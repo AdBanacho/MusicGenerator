@@ -21,6 +21,11 @@ class MusicGenerator:
 
     def load_data(self):
         self.X, self.y, self.blank_gaps = load_data_from_npy(self.train_data_setup)
+        blank_signal_save(train_data_set_up=self.train_data_setup,
+                          original_signal=self.X,
+                          blank_gaps=self.blank_gaps
+                          )
+        original_signal_save(original_signal=self.y, train_data_set_up=self.train_data_setup)
 
     def train(self, ann, rnnR, rnnL):
         training(ann=ann, rnnR=rnnR, rnnL=rnnL,
@@ -32,8 +37,3 @@ class MusicGenerator:
                                  blank_gaps=self.blank_gaps,
                                  train_data_set_up=self.train_data_setup
                                  )
-        blank_signal_save(train_data_set_up=self.train_data_setup,
-                          original_signal=self.X,
-                          blank_gaps=self.blank_gaps
-                          )
-        original_signal_save(original_signal=self.y, train_data_set_up=self.train_data_setup)
